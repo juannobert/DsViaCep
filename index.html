@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS Via Cep</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="nav-container">
+        <nav class="nav-main">
+            <h1>DSViaCEP</h1>
+            <p class="contact-link">contato</p>
+        </nav>
+    </header>
+    <main>
+        <section id="form-section" class="form-container">
+            <div class="card-form">
+                <form  id="newAddress" >
+                    <div class="form-control">
+                        <label for="cep"></label>
+                        <input id="cep" placeholder="CEP" name="cep" type="text" class="form-input">
+                        <div class="error-message">Campo Requerido</div>
+                    </div>
+                    <div class="form-control">
+                        <label for="street"></label>
+                        <input id="street" placeholder="LOGRADOURO" name="street" type="text" class="form-input" disabled>
+                    </div>
+                    <div class="form-control">
+                        <label for="numbert"></label>
+                        <input id="number" placeholder="NÙMERO" name="number" type="text" class="form-input">
+                        <div class="error-message">Campo Requerido</div>
+                    </div>
+                    <div class="form-control">
+                        <label for="cidade"></label>
+                        <input id="cidade" placeholder="CIDADE" name="cidade" type="text" class="form-input" disabled>
+                    </div>
+                    <div class="btn-container">
+                        <button class="btn" type="submit">Salvar</button>
+                        <button class="btn">Limpar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="list-section" class="list-container">
+            <div class="card-list-item">
+                <h3 class="address-line">São Paulo</h3>
+                <p class="address-line">Rua dos Jardins,720</p>
+                <p class="cep-line">11200-345</p>
+            </div>
+            <div class="card-list-item">
+                <h3 class="address-line">São Paulo</h3>
+                <p class="address-line">Rua dos Jardins,720</p>
+                <p class="cep-line">11200-345</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

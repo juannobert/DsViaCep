@@ -26,24 +26,24 @@
                     <div class="form-control">
                         <label for="cep"></label>
                         <input id="cep" placeholder="CEP" name="cep" type="text" class="form-input">
-                        <div class="error-message">Campo Requerido</div>
+                        <div class="error-message" data-error="cep">Campo Requerido</div>
                     </div>
                     <div class="form-control">
                         <label for="street"></label>
                         <input id="street" placeholder="LOGRADOURO" name="street" type="text" class="form-input" disabled>
                     </div>
                     <div class="form-control">
-                        <label for="numbert"></label>
+                        <label for="number"></label>
                         <input id="number" placeholder="NÙMERO" name="number" type="text" class="form-input">
-                        <div class="error-message">Campo Requerido</div>
+                        <div class="error-message" data-error="number">Campo Requerido</div>
                     </div>
                     <div class="form-control">
-                        <label for="cidade"></label>
-                        <input id="cidade" placeholder="CIDADE" name="cidade" type="text" class="form-input" disabled>
+                        <label for="city"></label>
+                        <input id="city" placeholder="CIDADE" name="city" type="text" class="form-input" disabled>
                     </div>
                     <div class="btn-container">
-                        <button class="btn" type="submit">Salvar</button>
-                        <button class="btn">Limpar</button>
+                        <button name="btnSave" class="btn" type="submit">Salvar</button>
+                        <button name="btnClear" class="btn">Limpar</button>
                     </div>
                 </form>
             </div>
@@ -61,5 +61,6 @@
             </div>
         </section>
     </main>
+    <script type="module" src="js/dsviacep.js"></script>
 </body>
 </html>

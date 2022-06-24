@@ -1,6 +1,8 @@
+import Address from "../model/address"; // importando address
 
 //Função construtora
 function State(){ 
+    this.Address = new Address()
     this.inputCep = null;
     this.inputStreet = null
     this.inputNumber = null

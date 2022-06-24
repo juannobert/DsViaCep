@@ -31,6 +31,24 @@ export function init(){
 
     state.inputNumber.addEventListener("change",handlerInputNumberChange)
 
+    state.btnClear.addEventListener("click",handleBtnClearClick)
+
+}
+function handleBtnClearClick(event){
+    event.preventDefault()
+    clearForm()
+}
+
+function clearForm(){
+    state.inputCep.value = "" 
+    state.inputNumber.value = "" 
+    state.inputStreet.value = "" 
+    state.inputCity.value = "" 
+
+    setFormError("cep","")
+    setFormError("number","")
+    
+    state.inputCep.focus()
 }
 
 function handlerInputNumberChange(event){

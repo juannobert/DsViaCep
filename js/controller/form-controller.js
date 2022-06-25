@@ -1,4 +1,5 @@
 import Address from "../model/address.js"; // importando address
+import * as addressService from '../service/address-service.js'
 
 //Função construtora
 function State(){ 
@@ -32,8 +33,32 @@ export function init(){
     state.inputNumber.addEventListener("change",handlerInputNumberChange)
 
     state.btnClear.addEventListener("click",handleBtnClearClick)
+    state.btnSave.addEventListener("click",handleBtnSaveClick)
+    state.inputCep.addEventListener("change",hendleInputCepChange)
 
 }
+
+async function hendleInputCepChange(event){
+    try{
+        const cep = event.target.value;
+        const address = await addressService.findByCep(cep);
+
+        state.inputCity.value = address.city
+        state.inputStreet.value = address.street
+
+        state.inputNumber.focus()
+
+        setFormError("cep","")
+    }catch(e){
+        state.inputCity.value = ""
+        state.inputStreet.value = ""
+        setFormError("cep","Informe um CEP válido!")
+    }
+}
+async function handleBtnSaveClick(event){
+    event.preventDefault()
+}
+
 function handleBtnClearClick(event){
     event.preventDefault()
     clearForm()
@@ -47,7 +72,7 @@ function clearForm(){
 
     setFormError("cep","")
     setFormError("number","")
-    
+     
     state.inputCep.focus()
 }
 

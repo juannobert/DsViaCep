@@ -67,8 +67,20 @@ async function hendleInputCepChange(event){
 }
 async function handleBtnSaveClick(event){
     event.preventDefault()
-    listController.addCard(state.address)
-    clearForm()
+    const errors = addressService.getErrors(state.address)
+    const keys = Object.keys(errors)
+    if(keys.length > 0){
+        keys.forEach(key =>{
+            setFormError(key,errors[key])
+        })
+    }
+    else{
+        listController.addCard(state.address)
+        clearForm()
+        state.address = new Address()
+    }
+
+    
 }
 
 function handleBtnClearClick(event){

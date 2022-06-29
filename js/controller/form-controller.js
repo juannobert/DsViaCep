@@ -1,9 +1,10 @@
 import Address from "../model/address.js"; // importando address
 import * as addressService from '../service/address-service.js'
+import * as listController from './list-controller.js';
 
 //Função construtora
 function State(){ 
-    this.Address = new Address()
+    this.address = new Address()
     this.inputCep = null;
     this.inputStreet = null
     this.inputNumber = null
@@ -19,6 +20,7 @@ function State(){
 const state = new State()
 
 export function init(){
+ 
     state.inputCep = document.forms.newAddress.cep // Selecionando inputs no form a a partir do nome
     state.inputStreet = document.forms.newAddress.street
     state.inputNumber = document.forms.newAddress.number
@@ -31,6 +33,7 @@ export function init(){
     state.errorNumber = document.querySelector('[data-error="number"]')
 
     state.inputNumber.addEventListener("change",handlerInputNumberChange)
+    state.inputNumber.addEventListener("change",handlerInputNumberKeyup)
 
     state.btnClear.addEventListener("click",handleBtnClearClick)
     state.btnSave.addEventListener("click",handleBtnSaveClick)
@@ -38,11 +41,18 @@ export function init(){
 
 }
 
+function handlerInputNumberKeyup(event){
+    state.address.number = event.target.value
+}
 async function hendleInputCepChange(event){
     try{
         const cep = event.target.value;
         const address = await addressService.findByCep(cep);
-
+     
+        state.address.cep = address.cep
+        state.address.street = address.street
+        state.address.city = address.city
+        
         state.inputCity.value = address.city
         state.inputStreet.value = address.street
 
@@ -57,6 +67,8 @@ async function hendleInputCepChange(event){
 }
 async function handleBtnSaveClick(event){
     event.preventDefault()
+    listController.addCard(state.address)
+    clearForm()
 }
 
 function handleBtnClearClick(event){
